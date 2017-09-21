@@ -1,0 +1,100 @@
+{
+  "origin": {
+    "latitude": 43.0389,
+    "longitude": -87.9065,
+    "latitudeDelta": 0.0922,
+    "longitudeDelta": 0.0421
+  },
+  "results": [
+    {
+      "coordinate": {
+        "latitude": 43.0389,
+        "longitude": -87.9065
+      },
+      "name": "Jackie Chan's",
+      "address": "12 Witcha Falls",
+      "travelTime": "3 min",
+      "trendingNumber": "4",
+      "tagLine": "Adventure is worthwhile",
+      "image": "",
+      "followers": "23",
+      "testimonial": {
+        "name": "Jimbo Jones",
+        "profilePicture": "",
+        "comment": "Best place to grab a corona!"
+      }
+    },
+    {
+      "coordinate": {
+        "latitude": 43.0489,
+        "longitude": -87.9095
+      },
+      "name": "La Fuentes",
+      "address": "65 Bluma",
+      "travelTime": "9 min",
+      "trendingNumber": "7",
+      "tagLine": "La Aventura",
+      "image": "",
+      "followers": "19",
+      "testimonial": {
+        "name": "Jackie Brown",
+        "profilePicture": "",
+        "comment": "Better than Jackie Chan's"
+      }
+    },
+    {
+      "coordinate": {
+        "latitude": 43.0399,
+        "longitude": -87.9005
+      },
+      "name": "Pabst Bar",
+      "address": "85 MKE Street",
+      "travelTime": "7 min",
+      "trendingNumber": "1",
+      "tagLine": "lorem ipsum",
+      "image": "",
+      "followers": "1",
+      "testimonial": {
+        "name": "Pabst only customer",
+        "profilePicture": "",
+        "comment": "Never crowded!"
+      }
+    },
+    {
+      "coordinate": {
+        "latitude": 43.0319,
+        "longitude": -87.9125
+      },
+      "name": "Kansas Bar",
+      "address": "95 Boomoos",
+      "travelTime": "1 min",
+      "trendingNumber": "9",
+      "tagLine": "lorem ipsum",
+      "image": "",
+      "followers": "",
+      "testimonial": {
+        "name": "",
+        "profilePicture": "",
+        "comment": ""
+      }
+    },
+    {
+      "coordinate": {
+        "latitude": 43.0589,
+        "longitude": -87.8905
+      },
+      "name": "Jimbob Jones'",
+      "address": "123 East St",
+      "travelTime": "6 min",
+      "trendingNumber": "99",
+      "tagLine": "lorem ipsum",
+      "image": "",
+      "followers": "",
+      "testimonial": {
+        "name": "",
+        "profilePicture": "",
+        "comment": ""
+      }
+    },
+  ]
+}
