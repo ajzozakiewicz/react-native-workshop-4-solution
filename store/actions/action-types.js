@@ -1,2 +1,3 @@
-export const CALL_API = 'CALL_API'
-export const API_SUCCESS = 'API_SUCCESS'
+export const SEARCH_START = 'SEARCH_START'
+export const SEARCH_SUCCESS = 'SEARCH_SUCCESS'
+export const SEARCH_ERRROR = 'SEARCH_ERROR'

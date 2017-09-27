@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { searchBars } from './../store/actions/actions'
 import {
   AppRegistry,
   StyleSheet,
@@ -21,18 +22,24 @@ class HomeScreen extends React.Component {
 
     this.clickHandler = this.clickHandler.bind(this)
 
+    navigator.geolocation.getCurrentPosition(data => this.state.location = data, error => console.log('GEO ERROR', error))
+
     this.state = {
-      searchString: ''
+      searchString: '',
+      location: null
     }
+
+    console.log('CURRENT POSITION: ', this.state.location)
   }
 
   clickHandler () {
-    const { navigate } = this.props.navigation
-    return navigate('Map', { searchString: this.state.searchString })
+    const { navigation, doSearch } = this.props
+    const { searchString, location } = this.state
+    doSearch(searchString, location.coords.latitude, location.coords.longitude).then(() => navigation.navigate('Map', { searchString: this.state.searchString }))
   }
 
   render () {
-    console.log('app state connected: ', this.props)
+    console.log('search props', this.state)
     return (
       <View style={styles.container}>
         <View style={styles.row}>
@@ -49,7 +56,8 @@ class HomeScreen extends React.Component {
               underlineColorAndroid='transparent'
               placeholder='Search for beer, wine, or cocktail'
               placeholderTextColor='#f7f7f7'
-              onChange={(text) => this.setState({ searchString: text })}
+              onChangeText={text => this.setState({ searchString: text })}
+              value={this.state.searchString}
             />
           </View>
 
@@ -59,14 +67,6 @@ class HomeScreen extends React.Component {
           >
             <Image source={require('./../assets/images/Search.png')} style={{ height: 30, width: 30, marginTop: -5 }} />
           </TouchableOpacity>
-
-          <View>
-            {
-              this.props.bars.map((item, idx) => (
-                <Text key={idx}>{item.name}</Text>
-              ))
-            }
-          </View>
         </View>
       </View>
     )
@@ -121,9 +121,8 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect(state => {
-  console.log('this is the state', state)
+export default connect(null, dispatch => {
   return {
-    bars: state.bars.data
+    doSearch: (text, lat, long) => dispatch(searchBars(text, lat, long))
   }
 })(HomeScreen)

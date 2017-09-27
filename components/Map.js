@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { View, StyleSheet } from 'react-native'
 import {NavigationActions} from 'react-navigation'
 import MapView, { Marker } from 'react-native-maps'
@@ -10,7 +11,7 @@ import mockdata from '../mock/mockdata.json'
 
 const backAction = NavigationActions.back()
 
-export default class Map extends Component {
+class Map extends Component {
   static navigationOptions () {
     return { title: 'Results' }
   }
@@ -52,6 +53,7 @@ export default class Map extends Component {
   }
 
   render () {
+    console.log('I am connected', this.props)
     return (
       <View style={styles.container}>
         <BackBar navigate={this.goHome} />
@@ -118,3 +120,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   }
 })
+
+export default connect(state => {
+  return {
+    results: state.search.results
+  }
+})(Map)

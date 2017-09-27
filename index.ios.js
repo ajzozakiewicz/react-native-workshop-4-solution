@@ -17,7 +17,7 @@ const Routes = StackNavigator({
 
 const store = configureStore();
 
-store.dispatch(fetchInitialState());
+// store.dispatch(fetchInitialState());
 store.subscribe(() => {
     console.log('State Change: ', store.getState());
 });
