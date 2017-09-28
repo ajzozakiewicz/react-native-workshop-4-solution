@@ -29,11 +29,6 @@ class Map extends Component {
     this.goHome = this.goHome.bind(this)
   }
 
-  // loads mock data
-  componentWillMount () {
-    this.setState({ markers: mockdata.results })
-  }
-
   // function to select a venue, pass to map markers and ResultsList
   setSelectedVenue (venue) {
     this.setState({
@@ -54,7 +49,6 @@ class Map extends Component {
   }
 
   render () {
-    console.log('I am connected', this.props.results)
     return (
       <View style={styles.container}>
         <BackBar navigate={this.goHome} />
