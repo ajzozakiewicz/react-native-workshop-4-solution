@@ -1,4 +1,4 @@
 {
   "movies":  "http://facebook.github.io/react-native/movies.json",
-  "barApi":  "http://nm-bar-finder.herokuapp.com/api/v1/bar/search"
+  "barApi":  "https://nm-bar-finder.herokuapp.com/api/v1/bar/search"
 }
