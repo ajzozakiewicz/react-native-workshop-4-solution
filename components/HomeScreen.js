@@ -22,24 +22,26 @@ class HomeScreen extends React.Component {
 
     this.clickHandler = this.clickHandler.bind(this)
 
-    navigator.geolocation.getCurrentPosition(data => this.state.location = data, error => console.log('GEO ERROR', error))
+    // Go get our location
+    navigator.geolocation.getCurrentPosition(data => {
+      this.state.location = data
+      console.log('CURRENT POSITION: ', this.state.location)
+    }, error => console.log('GEO ERROR', error))
 
     this.state = {
       searchString: '',
       location: null
     }
-
-    console.log('CURRENT POSITION: ', this.state.location)
   }
 
   clickHandler () {
     const { navigation, doSearch } = this.props
     const { searchString, location } = this.state
     doSearch(searchString, location.coords.latitude, location.coords.longitude).then(() => navigation.navigate('Map', { searchString: this.state.searchString }))
+    // should add a catch block in case there is an error. We would want to stay here and display the error message instead of naving to Map.
   }
 
   render () {
-    console.log('search props', this.state)
     return (
       <View style={styles.container}>
         <View style={styles.row}>

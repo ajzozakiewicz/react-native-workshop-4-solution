@@ -4,7 +4,7 @@ import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native'
 import * as colors from '../styles/colors'
 
 export default ({ rowData, setSelectedVenue }) => {
-  const { name, address, trendingNumber, travelTime } = rowData
+  const { name, address, rating, distance } = rowData
   return (
     <TouchableOpacity onPress={() => setSelectedVenue(rowData)}>
       <View style={styles.listItemContainer}>
@@ -12,11 +12,10 @@ export default ({ rowData, setSelectedVenue }) => {
         <View style={styles.mainContent}>
           <Text>{name}</Text>
           <Text style={styles.address}>{address}</Text>
-          <Text style={styles.trending}>+{trendingNumber} others trending now</Text>
+          <Text style={styles.trending}>Rating: {rating} / 5</Text>
         </View>
         <View style={styles.travel}>
-          <Text style={styles.travelText}>{travelTime}</Text>
-          <Image source={require('./../assets/images/glass-outline.png')} style={styles.smallIcon} />
+          <Text style={styles.travelText}>{distance} mi</Text>
         </View>
       </View>
     </TouchableOpacity>

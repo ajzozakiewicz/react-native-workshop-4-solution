@@ -6,6 +6,7 @@ import MapView, { Marker } from 'react-native-maps'
 import ResultsList from './ResultsList'
 import VenueDetails from './VenueDetails'
 import BackBar from './BackBar'
+import { GREEN } from './../styles/colors'
 
 import mockdata from '../mock/mockdata.json'
 
@@ -53,7 +54,7 @@ class Map extends Component {
   }
 
   render () {
-    console.log('I am connected', this.props)
+    console.log('I am connected', this.props.results)
     return (
       <View style={styles.container}>
         <BackBar navigate={this.goHome} />
@@ -68,11 +69,11 @@ class Map extends Component {
           }}
         >
 
-          {this.state.markers.map((venue, i) => {
+          {this.props.results.map((result, i) => {
             // create markers & pass setSelectedVenue function
             return (
-              <Marker {...venue} key={i} onPress={() => this.setSelectedVenue(venue)}>
-                <View style={styles.marker} />
+              <Marker coordinate={result.coordinate} key={i} onPress={() => this.setSelectedVenue(result)}>
+                {this.state.selectedVenue && this.state.selectedVenue.name === result.name ? <View style={styles.markerSelected} /> : <View style={styles.marker} /> }
               </Marker>
             )
           })}
@@ -80,11 +81,11 @@ class Map extends Component {
         </MapView>
 
         { /* check if there's any markers to display, if so generate list of results */}
-        { this.state.markers.length > 0 && !this.state.selectedVenue &&
+        { this.props.results.length > 0 && !this.state.selectedVenue &&
           <View style={styles.container}>
             <ResultsList
               setSelectedVenue={this.setSelectedVenue}
-              results={this.state.markers} />
+              results={this.props.results} />
           </View>
         }
 
@@ -108,6 +109,11 @@ const styles = StyleSheet.create({
   },
   marker: {
     backgroundColor: '#550bbc',
+    padding: 7,
+    borderRadius: 7
+  },
+  markerSelected: {
+    backgroundColor: GREEN,
     padding: 7,
     borderRadius: 7
   },
