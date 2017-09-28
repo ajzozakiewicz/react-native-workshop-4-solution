@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, TouchableOpacity, StyleSheet, Button, ScrollView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, Button, ScrollView, Dimensions } from 'react-native'
 import venueImage from './../assets/images/venue-image.png'
 import * as colors from '../styles/colors'
 
@@ -29,11 +29,11 @@ export default ({ venue, closeDetails }) => (
       </View>
 
       <View>
-        <Text style={styles.tagLine}>{venue.tagLine}</Text>
+        <Text style={styles.tagLine}>{venue.description}</Text>
       </View>
     </View>
 
-    <Image source={venueImage} />
+    <Image source={{uri: venue.image}} style={{ height: 250, width: Dimensions.get('screen').width }} />
   </ScrollView>
 )
 
